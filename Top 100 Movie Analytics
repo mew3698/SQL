@@ -128,24 +128,35 @@ SELECT AVG(domestic) FROM topmovies;
 SELECT title, year FROM topmovies ORDER BY worldwide;
 
 
---
+--Which movies were produced by Fox or released after 1990?
 SELECT title, year,studio FROM topmovies 
 WHERE studio="FOX" 
 OR year > 1990;
     
+    
+--Which movies made by Universal were released after 2000 and made less than $1B overseas?
 SELECT title, studio, year, overseas FROM topmovies
 WHERE studio="Uni."
 AND year > 2000
 AND overseas < 1000;
 
+
+-- Which movies were released in the year 1999?
 SELECT title FROM topmovies WHERE year="1999";
 
+
+--Which movies were made by the studio WB?
 SELECT title FROM topmovies WHERE studio="WB";
 
+
+--What was the total domestic earnings for each studio?
 SELECT studio, SUM(domestic) AS total_dom FROM topmovies GROUP BY studio HAVING total_dom >1000;
 
+
+--What was the average domestic earnings for each studio's movies?
 SELECT studio, AVG(domestic) AS avg_dom FROM topmovies GROUP BY studio HAVING avg_dom >300;
 
+--Group all 
  SELECT COUNT (*), CASE 
     WHEN year < 2000 THEN "20th Century"
     WHEN year > 1999 THEN "21st Century"
