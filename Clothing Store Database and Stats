@@ -1,0 +1,30 @@
+--Create a clothing store database.
+CREATE TABLE clothing (id integer primary key, name text, price integer, quantity integer, department text);
+
+INSERT INTO clothing VALUES (1, "Laced Bra", 19.99, 12, "women's");
+INSERT INTO clothing VALUES (2, "Cotton Thong", 7.99, 25, "women's");
+INSERT INTO clothing VALUES (3, "Athletic Socks", 11.98, 9, "men's");
+INSERT INTO clothing VALUES (4, "Cartoon Pajama Pants", 9.99, 8, "boys'");
+INSERT INTO clothing VALUES (5, "Striped Onesie", 10.99, 13, "infants'");
+INSERT INTO clothing VALUES (6, "Backless Dress", 18.99, 6, "women's");
+INSERT INTO clothing VALUES (7, "6 Pack Boxer Briefs", 17.98, 8, "men's");
+INSERT INTO clothing VALUES (8, "8 Pack Onesies", 15.99, 10, "infants'");
+INSERT INTO clothing VALUES (9, "Lined Sport's Bra", 16.99, 11, "women's");
+INSERT INTO clothing VALUES (10, "Unicorn T-shirt", 6.99, 14, "girls'");
+INSERT INTO clothing VALUES (11, "Navy Blue Pullover", 18.99, 6, "men's");
+INSERT INTO clothing VALUES (12, "Skinny Jeans", 22.99, 4, "women's");
+INSERT INTO clothing VALUES (13, "Checkered T-shirt", 8.99, 12, "boys'");
+INSERT INTO clothing VALUES (14, "Ripped Jeans", 12.99, 9, "boys'");
+INSERT INTO clothing VALUES (15, "Unlined Coat", 18.99, 3, "girls'");
+
+--Display the database ordered by price.
+SELECT * FROM clothing 
+ORDER BY price desc;
+
+--What is the average price in the women's department?
+SELECT AVG(price) "avg women's clothing price"
+FROM clothing
+where department ="women's"; 
+
+--What is the total number of items in this store?
+SELECT SUM (quantity) FROM clothing;
