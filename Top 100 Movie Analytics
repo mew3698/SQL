@@ -112,14 +112,23 @@ INSERT INTO topmovies(Rank,Title,Studio,Worldwide,Domestic,DomesticPct,Overseas,
 INSERT INTO topmovies(Rank,Title,Studio,Worldwide,Domestic,DomesticPct,Overseas,OverseasPct,Year) VALUES (99,'Casino Royale','Sony',599.00,167.40,0.28,431.60,0.72,2006);
 INSERT INTO topmovies(Rank,Title,Studio,Worldwide,Domestic,DomesticPct,Overseas,OverseasPct,Year) VALUES (100,'Tangled','BV',591.80,200.80,0.34,391.00,0.66,2010);
 
+--What movie made the most money wordwide?
 SELECT MAX(worldwide) FROM topmovies;
 
+
+--What is the oldest top movie?
 SELECT MIN(year) FROM topmovies;
 
+
+--What is the average domestic earnings?
 SELECT AVG(domestic) FROM topmovies;
 
+
+--Sort the movies by worldwide earnings.
 SELECT title, year FROM topmovies ORDER BY worldwide;
 
+
+--
 SELECT title, year,studio FROM topmovies 
 WHERE studio="FOX" 
 OR year > 1990;
