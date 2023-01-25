@@ -1,0 +1,81 @@
+--What is the average danceability by artist and track? 
+
+SELECT AVG(danceability)
+FROM BIT_DB.Spotifydata;
+
+
+--Who are the top 10 artists based on popularity? 
+
+SELECT artist_name
+FROM BIT_DB.Spotifydata
+ORDER BY popularity desc
+LIMIT 10;
+
+
+--What artist released the longest song? 
+
+SELECT artist_name
+FROM BIT_DB.Spotifydata
+ORDER BY duration_ms DESC
+LIMIT 1;
+
+
+--What's the average danceability for the 10 most popular songs?
+
+SELECT AVG(danceability)
+FROM BIT_DB.Spotifydata
+ORDER BY popularity desc
+LIMIT 10;
+
+
+--What is the average speechiness of tracks made by Dua Lipa?
+
+SELECT AVG(speechiness)
+FROM BIT_DB.Spotifydata
+HAVING artist_name='Dua Lipa';
+
+
+--What song has the max tempo?
+
+SELECT track_name
+FROM BIT_DB.Spotifydata
+ORDER BY temp desc
+LIMIT 1;
+
+
+--How many songs have a time signature of 3?
+
+SELECT COUNT(track_name)
+FROM BIT_DB.Spotifydata
+WHERE time_signature=3;
+
+
+--How many songs were made by Olivia Rodrigo?
+
+SELECT COUNT(artist_name)
+FROM BIT_DB.Spotifydata
+WHERE artist_name='Olivia Rodrigo';
+
+
+--Which song has the slowest tempo, and what is the valence?
+
+SELECT track_name, valence
+FROM BIT_DB.Spotifydata
+ORDER BY tempo asc
+LIMIT 1;
+
+
+--Calculate the average popularity for the artists in the Spotify data table. 
+--Then, for every artist with an average popularity of 90 or above, show their name, their average popularity, and label them as a “Top Star”.
+
+WITH popularity_average_CTE AS (
+SELECT s.artist_name,
+AVG(s.popularity) AS average_popularity
+FROM SpotifyData s 
+GROUP BY s.artist_name
+)
+SELECT  artist_name,
+        average_popularity,
+        'Top Star' AS tag
+FROM popularity_average_CTE
+WHERE average_popularity>=90;
